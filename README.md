@@ -1,4 +1,4 @@
 # Music-Player
-audios folder consists of all songs
-images folder consists of images related to those songs
+<b>audios folder<b> consists of all songs<br><br>
+<b>images folder<b> consists of images related to those songs<br><br>
 developed a music player which is similar to spotify
