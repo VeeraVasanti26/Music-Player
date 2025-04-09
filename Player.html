@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <title>Document</title>
+  <style>
+    body{
+      margin: 0;
+      padding: 0;
+      font-family: sans-serif;
+    }
+    .back {
+      background-color: black;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height:100vh;
+    }
+    .music-div{
+      background-color: rgb(31, 31, 31);
+      width:240px;
+      padding:30px 25px;
+    }
+    .nav {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+
+    }
+    .now{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding-top: 7px;
+    }
+    .now p{
+      font-weight: bold;
+      color: white;
+      text-align: center;
+    }
+    .right {
+      padding: 5px;
+      width:20px;
+      height: 20px;
+      border-radius: 50px;
+      background-color: whitesmoke;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 18px;
+      box-shadow: 0 3px 3px rgb(173, 173, 173);
+    }
+    .bar {
+      padding: 5px;
+      width:20px;
+      height: 20px;
+      border-radius: 50px;
+      background-color: whitesmoke;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 16px;
+      box-shadow: 0 3px 3px rgb(173, 173, 173);
+    }
+    .imag {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin-top: 9px;
+    }
+    .im{
+      width:240px;
+      height: 210px;
+      border-radius: 8px;
+      margin: 5px;
+      box-shadow: 0 0 3px rgb(156, 156, 156);
+    }
+    .song {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+    h1 {
+      font-size: 17px;
+      color:white;
+      align-self: center;
+      margin-bottom: 0;
+    }
+    p{
+       color: rgb(205, 204, 204);
+       font-size: 11px;
+       margin-top: 3px;
+       letter-spacing: 0.5px;
+    }
+    .plus {
+      width: 17px;
+      height: 17px;
+      border: 1.5px solid white;
+      border-radius: 40px;
+      color: white;
+      font-size: 22.5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      font-weight: 200;
+      cursor: pointer;
+      position: relative;
+      transition: all 0.2s;
+    }
+    .plus1{
+      width:17px;
+      height: 17px;
+      border: 1.5px solid white;
+      border-radius: 14px;
+      color:white;
+      font-size: 27px;
+      font-stretch:wider;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      position: relative;
+      font-weight: 200;
+      cursor: pointer;
+    }
+    .like {
+      width: 17px;
+      height: 17px;
+      border: none;
+      color: red;
+      font-size: 22.5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      font-weight: 200;
+      cursor: pointer;
+    }
+    .minus{
+      position: absolute;
+      top:-10px;
+
+    }
+    .progress {
+      -webkit-appearance: none;
+      width:100%;
+      height:3px;
+      background:rgb(72, 72, 72);
+      cursor: pointer;
+      margin: 16px 0;
+      margin-bottom: 5px;
+      color: white;
+    }
+    .progress::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      background: white;
+      width:6px;
+      height: 6px;
+      border-radius: 18px;
+      box-shadow: 0 0 3px rgb(134, 133, 133);
+    
+    }
+    .control {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .control i{
+    width: 15px;
+    height: 15px;
+    font-size: 23px;
+    display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color:rgb(79, 79, 79);
+      cursor: pointer;
+      
+    }
+    .control div:nth-child(3){
+      transform: scale(1.1);
+      background-color: white;
+      border-radius: 50%;
+      width:40px;
+      height: 40px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .control div:nth-child(3) i{
+      font-size: 17px;
+      color:black;
+    }
+    .control div:nth-child(1) i{
+      color:rgb(221, 221, 221);
+      font-size: 25px;
+      font-weight: 300;
+    }
+    .time {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      margin: 0;
+    }
+    #share {
+      transition: color 0.15s;
+    }
+    #share:hover{
+      color:rgb(7, 196, 7);
+    }
+    .liked {
+      position: absolute;
+      font-size: 13px;
+      padding: 1px 6px;
+      background-color: whitesmoke;
+      color: black;
+      border-radius: 1px;
+      bottom:-23px;
+      left:-5px;
+      opacity: 0;
+
+    }
+    .plus:hover .liked{
+      opacity: 1;
+    }
+    .backw {
+      position: relative;
+    }
+    .forward {
+      position: absolute;
+      font-size: 10px;
+      padding: 1px 6px;
+      background-color: whitesmoke;
+      color: black;
+      border-radius: 1px;
+      bottom:-22px;
+      left:-25px;
+      opacity: 0;
+    }
+   .backw:hover .forward,.forw:hover .forward,.play:hover .forward{
+    opacity: 1;
+   }
+   .forw{
+    position: relative;
+   }
+   .play {
+    position: relative;
+   }
+   .play-mu{
+    position: absolute;
+      font-size: 10px;
+      padding: 2px 7px;
+      background-color: whitesmoke;
+      color: black;
+      border-radius: 1px;
+      bottom:-15px;
+      opacity: 0;
+   }
+   .play:hover .play-mu{
+    opacity: 1;
+   }
+   .share-mu{
+    position: relative;
+   }
+   .share-mu:hover .play-mu{
+    opacity: 1;
+   }
+  </style>
+</head>
+<body>
+  <div class="back">
+    <div class="music-div">
+      <nav class="nav">
+        <div class="right" onclick="Backward()"> 
+          <i class='fas fa-angle-left'></i>
+        </div>
+        <div class="now"><p>PLAYING NOW</p></div>
+        <div class="bar">
+          <i class="fa fa-bars"></i>
+        </div>
+      </nav>
+      <nav class="imag">
+        <img src="images/1.jpg" class="im" alt="badhulu-thoche">
+      </nav>
+      <nav class="song">
+        <div>
+          <h1 class="title">Badhulu Thochani</h1>
+        <p class="art">Karthik,Mallikarjun</p>
+        </div>
+        <div class="plus" onclick="like();">
+          +
+          <div class="liked">like</div>
+        </div>
+        
+      </nav>
+      <audio class="audio">
+        <source src="audios/1.mpeg" type="audio/mpeg" class="music">
+      </audio>
+      <input type="range" value="0" class="progress">
+      <nav class="time">
+        <div>
+          <p class="currenttime">0:00</p>
+        </div>
+        <div>
+          <p class="maxtime">0:00</p>
+        </div>
+      </nav>
+      <div class="control">
+        <div class="share-mu"><i class="fa fa-share-alt" id="share"></i>
+          <div class="play-mu">Share</div></div>
+        <div class="backw">
+          <i class="fa fa-step-backward" id="backw" onclick="Backward()"></i>
+          <div class="forward">Backward</div>
+        </div>
+        <div class="play"><i class="fa fa-play" id="playe" onclick="Play()"></i>
+          <div class="play-mu">Play</div></div>
+        <div class="forw"><i class="fa fa-step-forward" id="forw" onclick="Forward()"></i>
+          <div class="forward">Forward</div></div>
+        <div class="plus1">
+            <div class="minus">-</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    let mo_list=[{name:"Badhulu Thochani",artists:"Karthik,Mallikarjun"},{name: "Choododde Nannu",artists:"Tippu,Sumangalay"},{name:"Ullasam",artists:"Jakes Bejoy,Sanjith Hegde"}]
+    let i=0;
+    let interval;
+    let progress=document.querySelector(".progress");
+    let song=document.querySelector(".audio");
+    let playe=document.getElementById("playe");
+    let currentdisplay=document.querySelector(".currenttime");
+    let maxtime=document.querySelector(".maxtime");
+    let imag=document.querySelector(".im");
+    let music=document.querySelector(".music");
+    let title=document.querySelector(".title");
+    let art=document.querySelector(".art");
+    song.onloadedmetadata= function() {
+      progress.max = song.duration;
+      progress.value = song.currentTime;
+      let minutes = Math.floor(song.duration / 60);
+    let seconds = Math.floor(song.duration % 60);
+    maxtime.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+    }
+    song.ontimeupdate = function() {
+    progress.value = song.currentTime;
+    let minutes = Math.floor(song.currentTime / 60);
+    let seconds = Math.floor(song.currentTime % 60);
+    currentdisplay.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+  };
+    function Play(){
+      if (playe.classList.contains("fa-pause")) {
+        song.pause();
+        playe.classList.remove("fa-pause");
+        playe.classList.add("fa-play");
+      }
+      else{
+        song.play();
+        playe.classList.add("fa-pause");
+        playe.classList.remove("fa-play");
+        interval=setInterval(()=>{
+        progress.value=song.currentTime;
+      },500);
+      }
+    }
+    progress.addEventListener('input', function() {
+    song.currentTime = progress.value;
+  });
+  function Forward(){
+    i++;
+    title.innerHTML=mo_list[i].name;
+    art.innerHTML=mo_list[i].artists;
+    music.src=`audios/${i+1}.mpeg`;
+    imag.src=`images/${i+1}.jpg`;
+    song.load(); 
+     document.getElementById("forw").style.color="white";
+     document.getElementById("backw").style.color="rgb(79, 79, 79)";
+     song.play();
+     playe.classList.add("fa-pause");
+        playe.classList.remove("fa-play");
+        interval=setInterval(()=>{
+        progress.value=song.currentTime;
+      },500);
+
+  }
+  function Backward(){
+    i--;
+    title.innerHTML=mo_list[i].name;
+    art.innerHTML=mo_list[i].artists;
+    music.src=`audios/${i+1}.mpeg`;
+    imag.src=`images/${i+1}.jpg`;
+    song.load(); 
+    Play(); 
+    document.getElementById("backw").style.color="white";
+     document.getElementById("forw").style.color="rgb(79, 79, 79)";
+     song.play()
+     playe.classList.add("fa-pause");
+        playe.classList.remove("fa-play");
+        interval=setInterval(()=>{
+        progress.value=song.currentTime;
+      },500);
+  }
+     
+      song.addEventListener('pause', function() {
+    clearInterval(interval);
+  });
+  song.addEventListener('ended', function() {
+    playe.classList.remove("fa-pause");
+        playe.classList.add("fa-play");
+        clearInterval(interval);
+  });
+  function like(){
+    setTimeout(()=>{
+      let p=document.querySelector(".plus");
+    if(p){
+      console.log(p.classList.contains("like"))
+      if(p.classList.contains("like")){
+      p.innerHTML='+';
+      p.classList.remove("like")
+    p.classList.add("plus");
+    }
+    else{
+      p.innerHTML='<i class="fa fa-heart"></i>';
+    p.classList.remove("plus")
+    p.classList.add("like");
+    }
+  }
+    else{
+      let o=document.querySelector(".like");
+      o.innerHTML='+';
+      o.classList.remove("like")
+    o.classList.add("plus");
+    }
+    },200)
+    
+      
+    }
+    
+    
+    
+  
+
+  </script>
+</body>
+</html>
